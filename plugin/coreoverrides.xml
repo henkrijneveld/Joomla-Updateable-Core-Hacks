@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="system">
+    <name>plg_system_coreoverrides</name>
+    <author>Henk Rijneveld</author>
+    <creationDate>September 2017</creationDate>
+    <copyright>Copyright (C) 2017. All rights reserved.</copyright>
+    <license>GPL</license>
+    <authorEmail>henk@vancarabas.nl</authorEmail>
+    <authorUrl>www.vancarabas.nl</authorUrl>
+    <version>0.1.0</version>
+    <description>Updateable core-overrides. Well, sort of..</description>
+
+    <files>
+        <filename plugin="coreoverrides">coreoverrides.php</filename>
+        <filename>registeroverrides.php</filename>
+        <folder>overrides</folder>
+        <folder>language</folder>
+    </files>
+
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_system_coreoverrides.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_system_coreoverrides.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="enabled_frontend"
+                        type="radio"
+                        label="Enable core overrides frontend"
+                        description="Enabling or disabling the plugin itself will have no effect"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                        filter="options"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="enabled_backend"
+                        type="radio"
+                        label="Enable core overrides backend"
+                        description="Enabling or disabling the plugin itself will have no effect"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                        filter="options"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>
