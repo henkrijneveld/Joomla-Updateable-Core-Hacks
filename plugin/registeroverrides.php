@@ -7,15 +7,17 @@
 
 $isadmin = strpos(JPATH_THEMES, "administrator") !== false; // kludge
 
-if (($isadmin && file_exists(dirname(__FILE__)."/enabledbackend.txt")) ||
-  (!$isadmin && file_exists(dirname(__FILE__)."/enabledfrontend.txt"))) {
-  JLoader::registerPrefix('J', dirname(__FILE__) . '/overrides/libraries/joomla', false, true);
-  JLoader::registerPrefix('J', dirname(__FILE__) . '/overrides/libraries/cms', false, true);
+$s = JPATH_ROOT."/plugins/system/coreoverrides";
+
+if (($isadmin && file_exists($s."/enabledbackend.txt")) ||
+  (!$isadmin && file_exists($s."/enabledfrontend.txt"))) {
+  JLoader::registerPrefix('J', $s . '/overrides/libraries/joomla', false, true);
+  JLoader::registerPrefix('J', $s . '/overrides/libraries/cms', false, true);
   JLoader::registerNamespace('Joomla\\CMS', dirname(__FILE__) . '/overrides/libraries/src', false, true, 'psr4');
 
-  __registerOverriddenClasses(dirname(__FILE__) . "/overrides/components");
-  __registerOverriddenClasses(dirname(__FILE__) . "/overrides/plugins");
-  __registerOverriddenClasses(dirname(__FILE__) . "/overrides/modules");
+  __registerOverriddenClasses($s . "/overrides/components");
+  __registerOverriddenClasses($s . "/overrides/plugins");
+  __registerOverriddenClasses($s . "/overrides/modules");
 }
 
 //
@@ -31,7 +33,7 @@ if (($isadmin && file_exists(dirname(__FILE__)."/enabledbackend.txt")) ||
  */
 function __loadClassInMemoryAndRename($classname, $overridefile)
 {
-  $pathpart = "/coreoverrides/overrides";
+  $pathpart = "/overrides";
   $pos = strpos($overridefile, $pathpart);
   $s = file_get_contents(JPATH_ROOT.substr($overridefile, $pos + strlen($pathpart)));
 
