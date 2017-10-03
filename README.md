@@ -65,5 +65,7 @@ Backup your overrides directory. (Re-)Install the plugin. Copy the backed-up ove
 3. It is advised not to override the backend when not necessary. 
 4. Upgrading is as of yet not automatic
 5. Only php files are supported
+6. In principle it should be possible to override classes of 3rd party component suppliers. However,
+a lot of them use direct require_once's, so the it cant be overridden with the autoloader.
 
 
